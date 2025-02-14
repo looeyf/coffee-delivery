@@ -19,6 +19,10 @@ export const ResetCssGlobalStyle = createGlobalStyle`
     font-size: 1rem;
   }
 
+  ul {
+    list-style-type: none;
+  }
+
   button {
     cursor: pointer;
   }
