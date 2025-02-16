@@ -22,7 +22,7 @@ export function Header() {
         <ul>
           <li>
             <LocationButton>
-              <MapPin size={22} weight="fill" color={theme.purple} />
+              <MapPin size={22} weight="fill" color={theme.colors.purple} />
               Porto Alegre, RS
             </LocationButton>
           </li>
@@ -32,7 +32,7 @@ export function Header() {
               <ShoppingCart
                 size={22}
                 weight="fill"
-                color={theme['yellow-dark']}
+                color={theme.colors['yellow-dark']}
               />
             </ShoppingCartButton>
           </li>

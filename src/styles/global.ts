@@ -8,15 +8,15 @@ export const ResetCssGlobalStyle = createGlobalStyle`
   }
 
   body {
-    background-color: ${(props) => props.theme['background']};
-    color: ${(props) => props.theme['base-text']};
+    background-color: ${({ theme }) => theme.colors['background']};
+    color: ${({ theme }) => theme.colors['base-text']};
     -webkit-font-smoothing: antialiased;
   }
 
   body, input, textarea, button {
     font-family: 'Roboto', sans-serif;
     font-weight: 400;
-    font-size: 1rem;
+    font-size: ${({ theme }) => theme.fonts.text.m};
   }
 
   ul {

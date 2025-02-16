@@ -23,7 +23,7 @@ export const LogoNavLink = styled(NavLink)`
 `;
 
 const HeaderBaseButton = styled(Button)`
-  font-size: 0.875rem;
+  font-size: ${({ theme }) => theme.fonts.text.s};
 
   transition: 0.2s filter ease-in-out;
   &:hover {
@@ -32,10 +32,10 @@ const HeaderBaseButton = styled(Button)`
 `;
 
 export const LocationButton = styled(HeaderBaseButton)`
-  background-color: ${({ theme }) => theme['purple-light']};
-  color: ${({ theme }) => theme['purpe-dark']};
+  background-color: ${({ theme }) => theme.colors['purple-light']};
+  color: ${({ theme }) => theme.colors['purpe-dark']};
 `;
 
 export const ShoppingCartButton = styled(HeaderBaseButton)`
-  background-color: ${({ theme }) => theme['yellow-light']};
+  background-color: ${({ theme }) => theme.colors['yellow-light']};
 `;

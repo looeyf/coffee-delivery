@@ -4,11 +4,11 @@ export type ButtonSize = 'small' | 'large';
 
 const BUTTON_SIZE: Record<ButtonSize, RuleSet> = {
   small: css`
-    font-size: 0.75rem;
+    font-size: ${({ theme }) => theme.fonts.button.m};
     padding: 0.5rem;
   `,
   large: css`
-    font-size: 0.875rem;
+    font-size: ${({ theme }) => theme.fonts.button.g};
     padding: 0.75rem;
   `,
 };
