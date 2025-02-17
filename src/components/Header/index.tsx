@@ -3,11 +3,11 @@ import {
   LocationButton,
   LogoNavLink,
   NavigationContainer,
-  ShoppingCartButton,
 } from './styles';
 import coffeeDeliveryLogo from '../../assets/coffee-delivery-logo.svg';
-import { MapPin, ShoppingCart } from 'phosphor-react';
+import { MapPin } from 'phosphor-react';
 import { useTheme } from 'styled-components';
+import { ShoppingCartButton } from './components/ShoppingCartButton';
 
 export function Header() {
   const theme = useTheme();
@@ -27,14 +27,7 @@ export function Header() {
             </LocationButton>
           </li>
           <li>
-            {/* @TODO: move to separated component and add corner items qty counter */}
-            <ShoppingCartButton>
-              <ShoppingCart
-                size={22}
-                weight="fill"
-                color={theme.colors['yellow-dark']}
-              />
-            </ShoppingCartButton>
+            <ShoppingCartButton />
           </li>
         </ul>
       </NavigationContainer>

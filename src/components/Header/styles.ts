@@ -22,20 +22,14 @@ export const LogoNavLink = styled(NavLink)`
   line-height: 0;
 `;
 
-const HeaderBaseButton = styled(Button)`
+export const LocationButton = styled(Button)`
   font-size: ${({ theme }) => theme.fonts.text.s};
 
   transition: 0.2s filter ease-in-out;
   &:hover {
     filter: brightness(95%);
   }
-`;
 
-export const LocationButton = styled(HeaderBaseButton)`
   background-color: ${({ theme }) => theme.colors['purple-light']};
   color: ${({ theme }) => theme.colors['purpe-dark']};
-`;
-
-export const ShoppingCartButton = styled(HeaderBaseButton)`
-  background-color: ${({ theme }) => theme.colors['yellow-light']};
 `;
