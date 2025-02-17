@@ -1,6 +1,21 @@
 import styled from 'styled-components';
+import heroSectionBackground from '../../assets/hero-section-bg.svg';
 
 export const HeroSection = styled.section`
+  position: relative;
+  &::before {
+    content: '';
+    position: absolute;
+    width: 100vw;
+    height: 100%;
+    left: calc(((100vw - 70rem) / 2) * -1);
+    background-image: url(${heroSectionBackground});
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    z-index: -1;
+  }
+
   padding: 5.75rem 0%;
   display: flex;
   align-items: center;
