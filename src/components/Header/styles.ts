@@ -31,5 +31,5 @@ export const LocationButton = styled(Button)`
   }
 
   background-color: ${({ theme }) => theme.colors['purple-light']};
-  color: ${({ theme }) => theme.colors['purpe-dark']};
+  color: ${({ theme }) => theme.colors['purple-dark']};
 `;
