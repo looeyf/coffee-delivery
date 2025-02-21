@@ -62,6 +62,7 @@ export function Home() {
         <h2>Nossos cafés</h2>
 
         <ProductsListContainer>
+          {/* @TODO: Iterate through fake products */}
           <ProductCard />
           <ProductCard />
           <ProductCard />

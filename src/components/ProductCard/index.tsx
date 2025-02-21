@@ -10,10 +10,13 @@ import {
   ProductCardFooter,
   ProductFooterActions,
 } from './styles';
+import { InputNumber } from '../InputNumber';
+import { useState } from 'react';
 
 // @TODO: receive product info from component props
 export function ProductCard() {
   const theme = useTheme();
+  const [quantity, setQuantity] = useState(1);
 
   return (
     <ProductCardContainer>
@@ -35,8 +38,7 @@ export function ProductCard() {
         </p>
 
         <ProductFooterActions>
-          {/* @TODO: create change product quantity component */}
-          <input type="number" />
+          <InputNumber value={quantity} onChange={setQuantity} />
           <AddToCartButton>
             <ShoppingCartSimple
               size={22}
