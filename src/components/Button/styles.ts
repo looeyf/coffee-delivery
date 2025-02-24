@@ -23,4 +23,9 @@ export const StyledButton = styled.button<{ size: ButtonSize }>`
 
   line-height: 1.6;
   ${({ size }) => BUTTON_SIZE[size]}
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
 `;

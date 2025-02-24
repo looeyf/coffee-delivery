@@ -1,9 +1,14 @@
 import { ShoppingCart } from 'phosphor-react';
 import { useTheme } from 'styled-components';
 import { ProductsAmount, ShoppingCartButtonContainer } from './styles';
+import { useCart } from '../../../../contexts/CartContext';
 
 export function ShoppingCartButton() {
   const theme = useTheme();
+  const { cartItems } = useCart();
+
+  const cartItemsAmount = cartItems.length;
+
   return (
     <ShoppingCartButtonContainer>
       <ShoppingCart
@@ -12,7 +17,7 @@ export function ShoppingCartButton() {
         color={theme.colors['yellow-dark']}
       />
 
-      <ProductsAmount>3</ProductsAmount>
+      {!!cartItemsAmount && <ProductsAmount>{cartItemsAmount}</ProductsAmount>}
     </ShoppingCartButtonContainer>
   );
 }

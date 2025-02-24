@@ -12,33 +12,42 @@ import {
 import { InputNumber } from '../InputNumber';
 import { useState } from 'react';
 import { Product } from '../../@types/Product';
+import { useCart } from '../../contexts/CartContext';
 
 interface ProductCardProps {
-  data: Product;
+  productData: Product;
 }
 
-export function ProductCard({ data }: ProductCardProps) {
+export function ProductCard({ productData }: ProductCardProps) {
   const theme = useTheme();
   const [quantity, setQuantity] = useState(1);
+
+  const isInvalidQuantity = !quantity;
+
+  const { updateCartItems } = useCart();
+  const handleUpdateCartItems = () => {
+    if (isInvalidQuantity) return;
+    updateCartItems({ ...productData, quantity });
+  };
 
   const price = Intl.NumberFormat('pt-BR', {
     minimumFractionDigits: 2,
     maximumFractionDigits: 2,
-  }).format(data.price);
+  }).format(productData.price);
 
   return (
     <ProductCardContainer>
-      <img src={data.image} />
+      <img src={productData.image} />
 
       <ProductTagsContainer>
-        {data.tags.map((tag) => (
-          <Tag>{tag}</Tag>
+        {productData.tags.map((tag) => (
+          <Tag key={tag}>{tag}</Tag>
         ))}
       </ProductTagsContainer>
 
       <ProductDescription>
-        <h3>{data.title}</h3>
-        <p>{data.description}</p>
+        <h3>{productData.title}</h3>
+        <p>{productData.description}</p>
       </ProductDescription>
 
       <ProductCardFooter>
@@ -48,7 +57,10 @@ export function ProductCard({ data }: ProductCardProps) {
 
         <ProductFooterActions>
           <InputNumber value={quantity} onChange={setQuantity} />
-          <AddToCartButton>
+          <AddToCartButton
+            disabled={isInvalidQuantity}
+            onClick={handleUpdateCartItems}
+          >
             <ShoppingCartSimple
               size={22}
               weight="fill"

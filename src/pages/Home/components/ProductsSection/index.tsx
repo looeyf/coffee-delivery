@@ -9,7 +9,7 @@ export function ProductsSection() {
 
       <ProductsListContainer>
         {coffeeList.map((coffee) => (
-          <ProductCard key={coffee.id} data={coffee} />
+          <ProductCard key={coffee.id} productData={coffee} />
         ))}
       </ProductsListContainer>
     </ProductsSectionContainer>
