@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import heroSectionBackground from '../../assets/hero-section-bg.svg';
+import heroSectionBackground from '/assets/hero-section-bg.svg';
 
 export const HeroSection = styled.section`
   position: relative;

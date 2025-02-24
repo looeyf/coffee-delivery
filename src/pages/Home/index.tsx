@@ -1,5 +1,5 @@
 import { Coffee, Package, ShoppingCart, Timer } from 'phosphor-react';
-import heroSectionCoffee from '../../assets/hero-section-coffee.png';
+import heroSectionCoffee from '/assets/hero-section-coffee.png';
 import {
   BenefitsContainer,
   HeroSection,
@@ -9,6 +9,7 @@ import {
 import { useTheme } from 'styled-components';
 import { IconWithText } from '../../components/IconWithText';
 import { ProductCard } from '../../components/ProductCard';
+import { coffeeList } from '../../mocks/coffeeList';
 
 export function Home() {
   const theme = useTheme();
@@ -62,11 +63,9 @@ export function Home() {
         <h2>Nossos cafés</h2>
 
         <ProductsListContainer>
-          {/* @TODO: Iterate through fake products */}
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
+          {coffeeList.map((coffee) => (
+            <ProductCard key={coffee.id} data={coffee} />
+          ))}
         </ProductsListContainer>
       </ProductsSection>
     </main>

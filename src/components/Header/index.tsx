@@ -4,7 +4,7 @@ import {
   LogoNavLink,
   NavigationContainer,
 } from './styles';
-import coffeeDeliveryLogo from '../../assets/coffee-delivery-logo.svg';
+import coffeeDeliveryLogo from '/assets/coffee-delivery-logo.svg';
 import { MapPin } from 'phosphor-react';
 import { useTheme } from 'styled-components';
 import { ShoppingCartButton } from './components/ShoppingCartButton';

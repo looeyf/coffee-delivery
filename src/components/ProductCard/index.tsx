@@ -1,4 +1,3 @@
-import expressoTradicional from '../../assets/coffees/expresso-tradicional.png';
 import { ShoppingCartSimple } from 'phosphor-react';
 import { useTheme } from 'styled-components';
 import {
@@ -12,29 +11,39 @@ import {
 } from './styles';
 import { InputNumber } from '../InputNumber';
 import { useState } from 'react';
+import { Product } from '../../@types/Product';
 
-// @TODO: receive product info from component props
-export function ProductCard() {
+interface ProductCardProps {
+  data: Product;
+}
+
+export function ProductCard({ data }: ProductCardProps) {
   const theme = useTheme();
   const [quantity, setQuantity] = useState(1);
 
+  const price = Intl.NumberFormat('pt-BR', {
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
+  }).format(data.price);
+
   return (
     <ProductCardContainer>
-      <img src={expressoTradicional} />
+      <img src={data.image} />
 
       <ProductTagsContainer>
-        <Tag>Tradicional</Tag>
-        <Tag>Com leite</Tag>
+        {data.tags.map((tag) => (
+          <Tag>{tag}</Tag>
+        ))}
       </ProductTagsContainer>
 
       <ProductDescription>
-        <h3>Expresso Tradicional</h3>
-        <p>O tradicional café feito com água quente e grãos moídos</p>
+        <h3>{data.title}</h3>
+        <p>{data.description}</p>
       </ProductDescription>
 
       <ProductCardFooter>
         <p>
-          R$ <strong>9,90</strong>
+          R$ <strong>{price}</strong>
         </p>
 
         <ProductFooterActions>
