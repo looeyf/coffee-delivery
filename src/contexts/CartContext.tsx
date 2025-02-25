@@ -1,20 +1,38 @@
-import { createContext, PropsWithChildren, useContext, useState } from 'react';
+import {
+  createContext,
+  PropsWithChildren,
+  useContext,
+  useEffect,
+  useState,
+} from 'react';
 import { Product } from '../@types/Product';
 
 interface CartItem extends Product {
   quantity: number;
 }
 
+type CartItems = CartItem[];
+
 interface CartContextType {
-  cartItems: CartItem[];
+  cartItems: CartItems;
   updateCartItems: (updatedCartItem: CartItem) => void;
+  removeCartItem: (cartItemId: CartItem) => void;
 }
 
 const CartContext = createContext({} as CartContextType);
 
+const LOCAL_STORAGE_CART_ITEMS_KEY = '@rocketseat:coffee-delivery-cart';
+
 // @TODO: create reducer to handle context updates
 export function CartContextProvider({ children }: PropsWithChildren) {
-  const [cartItems, setCartItems] = useState<CartItem[]>([]);
+  const [cartItems, setCartItems] = useState<CartItems>([]);
+
+  const saveCartItemsInLocalStorage = (newCartItems: CartItems) => {
+    localStorage.setItem(
+      LOCAL_STORAGE_CART_ITEMS_KEY,
+      JSON.stringify(newCartItems),
+    );
+  };
 
   const updateCartItems = (updatedCartItem: CartItem) => {
     setCartItems((currentCartItems) => {
@@ -22,22 +40,44 @@ export function CartContextProvider({ children }: PropsWithChildren) {
         (currentCartItem) => currentCartItem.id === updatedCartItem.id,
       );
 
+      let updatedCartItems: CartItems;
+
       if (isProductInCart) {
-        const updatedCartItems = currentCartItems.map((currentCartItem) => {
+        updatedCartItems = currentCartItems.map((currentCartItem) => {
           if (currentCartItem.id === updatedCartItem.id) return updatedCartItem;
           return currentCartItem;
         });
-        return updatedCartItems;
+      } else {
+        updatedCartItems = [...currentCartItems, updatedCartItem];
       }
 
-      return [...currentCartItems, updatedCartItem];
+      saveCartItemsInLocalStorage(updatedCartItems);
+      return updatedCartItems;
     });
   };
+
+  const removeCartItem = (cartItemToBeRemoved: CartItem) => {
+    setCartItems((currentCartItems) => {
+      return currentCartItems.filter(
+        (currentCartItem) => currentCartItem.id !== cartItemToBeRemoved.id,
+      );
+    });
+  };
+
+  useEffect(() => {
+    const localStorageSavedCartItems = JSON.parse(
+      localStorage.getItem(LOCAL_STORAGE_CART_ITEMS_KEY) ?? '[]',
+    );
+    if (localStorageSavedCartItems.length) {
+      setCartItems(localStorageSavedCartItems);
+    }
+  }, []);
   return (
     <CartContext.Provider
       value={{
         cartItems,
         updateCartItems,
+        removeCartItem,
       }}
     >
       {children}
