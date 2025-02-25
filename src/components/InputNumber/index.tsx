@@ -5,7 +5,7 @@ import {
   InputNumberContainer,
   StyledInputNumber,
 } from './styles';
-import { isNumber } from '../../helpers';
+import { isNumber } from '../../helpers/isNumber';
 
 interface InputNumberProps {
   value: number;
