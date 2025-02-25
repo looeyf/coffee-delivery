@@ -8,13 +8,14 @@ import coffeeDeliveryLogo from '/assets/coffee-delivery-logo.svg';
 import { MapPin } from 'phosphor-react';
 import { useTheme } from 'styled-components';
 import { ShoppingCartButton } from './components/ShoppingCartButton';
+import { PAGE_ROUTES_ENUM } from '../../Router';
 
 export function Header() {
   const theme = useTheme();
 
   return (
     <HeaderContainer>
-      <LogoNavLink to="/">
+      <LogoNavLink to={PAGE_ROUTES_ENUM.HOME}>
         <img src={coffeeDeliveryLogo} />
       </LogoNavLink>
 
