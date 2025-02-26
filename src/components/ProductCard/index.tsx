@@ -46,7 +46,7 @@ export function ProductCard({ productData }: ProductCardProps) {
       </ProductTagsContainer>
 
       <ProductDescription>
-        <h3>{productData.title}</h3>
+        <h4>{productData.title}</h4>
         <p>{productData.description}</p>
       </ProductDescription>
 

@@ -34,12 +34,9 @@ export const Tag = styled.span`
 export const ProductDescription = styled.div`
   margin-bottom: 2rem;
 
-  h3 {
-    font-family: 'Baloo 2';
-    font-size: ${({ theme }) => theme.fonts.title.s};
-    font-weight: 700;
-    color: ${({ theme }) => theme.colors['base-subtitle']};
+  h4 {
     text-align: center;
+    color: ${({ theme }) => theme.colors['base-subtitle']};
 
     margin-bottom: 0.5rem;
   }

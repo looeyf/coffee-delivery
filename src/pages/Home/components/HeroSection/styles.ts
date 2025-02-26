@@ -16,18 +16,13 @@ export const HeroSectionContainer = styled.section`
     z-index: -1;
   }
 
-  padding: 5.75rem 0%;
+  padding: 5.75rem 0;
   display: flex;
   align-items: center;
   gap: 3.5rem;
 
   h1 {
-    font-family: 'Baloo 2';
-    font-size: ${({ theme }) => theme.fonts.title.xl};
-    font-weight: 800;
-    line-height: 1.3;
     color: ${({ theme }) => theme.colors['base-title']};
-
     margin-bottom: 1rem;
   }
 
