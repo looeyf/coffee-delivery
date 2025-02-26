@@ -6,15 +6,17 @@ import {
   StyledInputNumber,
 } from './styles';
 import { isNumber } from '../../helpers/isNumber';
+import { InputHTMLAttributes } from 'react';
 
-interface InputNumberProps {
-  value: number;
-  onChange: (newValue: number) => void;
+interface InputNumberProps
+  extends Omit<InputHTMLAttributes<HTMLInputElement>, 'onChange'> {
+  value?: number;
+  onChange?: (newValue: number) => void;
 }
 
 export function InputNumber({ value, onChange }: InputNumberProps) {
   const handleChange = (newValue: number) => {
-    onChange(newValue);
+    onChange?.(newValue);
   };
 
   const handleDecreaseQuantity = () => {
