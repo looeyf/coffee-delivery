@@ -27,16 +27,13 @@ export function Checkout() {
           </SectionContentTitle>
 
           <CheckoutForm>
-            <InputText placeholder="CEP" />
-            <InputText placeholder="Rua" style={{ gridColumn: 'span 6' }} />
-            <InputText placeholder="Número" />
-            <InputText
-              placeholder="Complemento"
-              style={{ gridColumn: 'span 4' }}
-            />
-            <InputText placeholder="Bairro" />
-            <InputText placeholder="Cidade" style={{ gridColumn: 'span 3' }} />
-            <InputText placeholder="UF" style={{ gridColumn: 'span 1' }} />
+            <InputText name="zip" placeholder="CEP" required />
+            <InputText name="street" placeholder="Rua" required />
+            <InputText name="number" placeholder="Número" required />
+            <InputText name="additional" placeholder="Complemento" />
+            <InputText name="neighborhood" placeholder="Bairro" required />
+            <InputText name="city" placeholder="Cidade" required />
+            <InputText name="state" placeholder="UF" required />
           </CheckoutForm>
         </SectionContentWrapper>
 

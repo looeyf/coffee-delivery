@@ -1,5 +1,5 @@
-import { ChangeEvent, InputHTMLAttributes } from 'react';
-import { StyledInputText } from './styles';
+import { ChangeEvent, InputHTMLAttributes, useState } from 'react';
+import { InputTextContainer, StyledInputText } from './styles';
 
 interface InputProps
   extends Omit<InputHTMLAttributes<HTMLInputElement>, 'onChange'> {
@@ -8,9 +8,18 @@ interface InputProps
 }
 
 export function InputText({ value, onChange, ...rest }: InputProps) {
+  const [hasValue, setHasValue] = useState(false);
+  const shouldRenderOptionalLabel = !rest.required && !hasValue;
+
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-    onChange?.(event.target.value);
+    const newValue = event.target.value;
+    setHasValue(!!newValue);
+    onChange?.(newValue);
   };
 
-  return <StyledInputText value={value} onChange={handleChange} {...rest} />;
+  return (
+    <InputTextContainer isOptional={shouldRenderOptionalLabel}>
+      <StyledInputText value={value} onChange={handleChange} {...rest} />
+    </InputTextContainer>
+  );
 }

@@ -50,5 +50,21 @@ export const CheckoutForm = styled.form`
 
   > * {
     grid-column: span 2;
+
+    &:has(input[name='street']) {
+      grid-column: span 6;
+    }
+
+    &:has(input[name='additional']) {
+      grid-column: span 4;
+    }
+
+    &:has(input[name='city']) {
+      grid-column: span 3;
+    }
+
+    &:has(input[name='state']) {
+      grid-column: span 1;
+    }
   }
 `;
