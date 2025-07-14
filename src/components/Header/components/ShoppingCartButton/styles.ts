@@ -25,7 +25,7 @@ export const ProductsAmount = styled.span`
   font-weight: 700;
 
   width: 20px;
-  height: 20px;
+  line-height: 20px;
   border-radius: 50%;
 
   transform: translate(50%, -50%);
