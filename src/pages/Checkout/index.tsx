@@ -1,4 +1,10 @@
-import { CurrencyDollar, MapPinLine } from 'phosphor-react';
+import {
+  Bank,
+  CreditCard,
+  CurrencyDollar,
+  MapPinLine,
+  Money,
+} from 'phosphor-react';
 import {
   CheckoutContainer,
   CheckoutForm,
@@ -7,6 +13,8 @@ import {
 } from './styles';
 import { useTheme } from 'styled-components';
 import { InputText } from '../../components/InputText';
+import { InputRadio } from '../../components/InputRadio';
+import { InputRadioGroup } from '../../components/InputRadio/styles';
 
 export function Checkout() {
   const theme = useTheme();
@@ -49,7 +57,21 @@ export function Checkout() {
             </div>
           </SectionContentTitle>
 
-          {/* @TODO: Select payment method */}
+          <InputRadioGroup>
+            <InputRadio
+              name="paymentMethod"
+              value="creditCard"
+              Icon={CreditCard}
+            >
+              Cartão de Crédito
+            </InputRadio>
+            <InputRadio name="paymentMethod" value="debitCard" Icon={Bank}>
+              Cartão de Débito
+            </InputRadio>
+            <InputRadio name="paymentMethod" value="money" Icon={Money}>
+              Dinheiro
+            </InputRadio>
+          </InputRadioGroup>
         </SectionContentWrapper>
       </section>
     </CheckoutContainer>
