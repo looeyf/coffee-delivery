@@ -1,12 +1,14 @@
 import { IconProps } from 'phosphor-react';
-import { ElementType, InputHTMLAttributes } from 'react';
+import { ChangeEvent, ElementType, InputHTMLAttributes } from 'react';
 import { HiddenInputRadio, InputRadioLabel } from './styles';
 import { useTheme } from 'styled-components';
 
-interface InputRadioProps extends InputHTMLAttributes<HTMLInputElement> {
+interface InputRadioProps
+  extends Omit<InputHTMLAttributes<HTMLInputElement>, 'onChange'> {
   iconSize?: number;
   iconPosition?: 'left' | 'right';
   Icon?: ElementType<IconProps>;
+  onChange?: (newValue: string) => void;
 }
 
 export function InputRadio({
@@ -14,6 +16,8 @@ export function InputRadio({
   Icon,
   iconPosition = 'left',
   iconSize = 16,
+  value,
+  onChange,
   ...rest
 }: InputRadioProps) {
   const theme = useTheme();
@@ -21,9 +25,18 @@ export function InputRadio({
   const hasLeftIcon = Icon && iconPosition === 'left';
   const hasRightIcon = Icon && iconPosition === 'right';
 
+  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
+    onChange?.(event.target.value);
+  };
+
   return (
     <InputRadioLabel>
-      <HiddenInputRadio type="radio" {...rest} />
+      <HiddenInputRadio
+        type="radio"
+        value={value}
+        onChange={handleChange}
+        {...rest}
+      />
 
       {hasLeftIcon && <Icon size={iconSize} color={theme.colors.purple} />}
       <span>{children}</span>
