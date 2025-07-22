@@ -13,6 +13,7 @@ import { InputNumber } from '../InputNumber';
 import { useState } from 'react';
 import { Product } from '../../@types/Product';
 import { useCart } from '../../contexts/CartContext';
+import { formatCurrency } from '../../helpers/formatCurrency';
 
 interface ProductCardProps {
   productData: Product;
@@ -30,10 +31,7 @@ export function ProductCard({ productData }: ProductCardProps) {
     updateCartItems({ ...productData, quantity });
   };
 
-  const price = Intl.NumberFormat('pt-BR', {
-    minimumFractionDigits: 2,
-    maximumFractionDigits: 2,
-  }).format(productData.price);
+  const formattedPrice = formatCurrency(productData.price);
 
   return (
     <ProductCardContainer>
@@ -52,7 +50,7 @@ export function ProductCard({ productData }: ProductCardProps) {
 
       <ProductCardFooter>
         <p>
-          R$ <strong>{price}</strong>
+          R$ <strong>{formattedPrice}</strong>
         </p>
 
         <ProductFooterActions>
