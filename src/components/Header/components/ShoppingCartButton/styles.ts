@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 import { Button } from '../../../Button';
 
-export const ShoppingCartButtonContainer = styled(Button).attrs({
+export const StyledShoppingCartButton = styled(Button).attrs({
   variant: 'raw',
 })`
-  font-size: ${({ theme }) => theme.fonts.text.s};
+  font-size: ${({ theme }) => theme.fonts.sizes.text.s};
 
   background-color: ${({ theme }) => theme.colors['yellow-light']};
   &:hover {
@@ -22,8 +22,8 @@ export const ProductsAmount = styled.span`
   background-color: ${({ theme }) => theme.colors['yellow-dark']};
   color: ${({ theme }) => theme.colors.white};
 
-  font-size: ${({ theme }) => theme.fonts.text.xs};
-  font-weight: 700;
+  font-size: ${({ theme }) => theme.fonts.sizes.text.xs};
+  font-weight: ${({ theme }) => theme.fonts.weights['semi-bold']};
 
   width: 20px;
   line-height: 20px;

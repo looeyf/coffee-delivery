@@ -19,7 +19,7 @@ export const InputTextContainer = styled.div<{ isOptional?: boolean }>`
         transform: translateY(-50%);
 
         font-style: italic;
-        font-size: ${({ theme }) => theme.fonts.text.xs};
+        font-size: ${({ theme }) => theme.fonts.sizes.text.xs};
         color: ${({ theme }) => theme.colors['base-label']};
 
         cursor: text;
@@ -34,7 +34,7 @@ export const StyledInputText = styled.input.attrs({ type: 'text' })`
   border: 1px solid ${({ theme }) => theme.colors['base-button']};
   border-radius: 4px;
 
-  font-size: ${({ theme }) => theme.fonts.text.s};
+  font-size: ${({ theme }) => theme.fonts.sizes.text.s};
   line-height: 1.3;
   color: ${({ theme }) => theme.colors['base-text']};
   outline: none;

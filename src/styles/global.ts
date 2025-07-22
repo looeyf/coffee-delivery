@@ -15,8 +15,8 @@ export const ResetCssGlobalStyle = createGlobalStyle`
 
   body, input, textarea, button {
     font-family: 'Roboto', sans-serif;
-    font-weight: 400;
-    font-size: ${({ theme }) => theme.fonts.text.m};
+    font-weight: ${({ theme }) => theme.fonts.weights.regular};
+    font-size: ${({ theme }) => theme.fonts.sizes.text.m};
   }
 
   ul {
@@ -33,27 +33,27 @@ export const ResetCssGlobalStyle = createGlobalStyle`
   }
 
   h1 {
-    font-size: ${({ theme }) => theme.fonts.title.xl};
-    font-weight: 800;
+    font-size: ${({ theme }) => theme.fonts.sizes.title.xl};
+    font-weight: ${({ theme }) => theme.fonts.weights.bold};
   }
 
   h2 {
-    font-size: ${({ theme }) => theme.fonts.title.l};
-    font-weight: 800;
+    font-size: ${({ theme }) => theme.fonts.sizes.title.l};
+    font-weight: ${({ theme }) => theme.fonts.weights.bold};
   }
 
   h3 {
-    font-size: ${({ theme }) => theme.fonts.title.m};
-    font-weight: 800;
+    font-size: ${({ theme }) => theme.fonts.sizes.title.m};
+    font-weight: ${({ theme }) => theme.fonts.weights.bold};
   }
 
   h4 {
-    font-size: ${({ theme }) => theme.fonts.title.s};
-    font-weight: 700;
+    font-size: ${({ theme }) => theme.fonts.sizes.title.s};
+    font-weight: ${({ theme }) => theme.fonts.weights['semi-bold']};
   }
 
   h5 {
-    font-size: ${({ theme }) => theme.fonts.title.xs};
-    font-weight: 700;
+    font-size: ${({ theme }) => theme.fonts.sizes.title.xs};
+    font-weight: ${({ theme }) => theme.fonts.weights['semi-bold']};
   }
 `;

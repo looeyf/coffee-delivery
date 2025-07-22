@@ -38,7 +38,7 @@ export const SectionContentTitle = styled.div`
     }
 
     span {
-      font-size: ${({ theme }) => theme.fonts.text.s};
+      font-size: ${({ theme }) => theme.fonts.sizes.text.s};
     }
   }
 `;

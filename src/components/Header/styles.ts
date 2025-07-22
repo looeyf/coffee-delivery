@@ -23,7 +23,7 @@ export const LogoNavLink = styled(NavLink)`
 `;
 
 export const LocationButton = styled(Button).attrs({ variant: 'raw' })`
-  font-size: ${({ theme }) => theme.fonts.text.s};
+  font-size: ${({ theme }) => theme.fonts.sizes.text.s};
 
   background-color: ${({ theme }) => theme.colors['purple-light']};
   color: ${({ theme }) => theme.colors['purple-dark']};

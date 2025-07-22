@@ -14,7 +14,7 @@ export const InputRadioLabel = styled.label`
 
   background-color: ${({ theme }) => theme.colors['base-button']};
   text-transform: uppercase;
-  font-size: ${({ theme }) => theme.fonts.button.m};
+  font-size: ${({ theme }) => theme.fonts.sizes.button.m};
   color: ${({ theme }) => theme.colors['base-text']};
 
   display: flex;

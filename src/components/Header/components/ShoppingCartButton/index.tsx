@@ -1,6 +1,6 @@
 import { ShoppingCart } from 'phosphor-react';
 import { useTheme } from 'styled-components';
-import { ProductsAmount, ShoppingCartButtonContainer } from './styles';
+import { ProductsAmount, StyledShoppingCartButton } from './styles';
 import { useCart } from '../../../../contexts/CartContext';
 import { useNavigate } from 'react-router';
 import { PAGE_ROUTES_ENUM } from '../../../../Router';
@@ -17,7 +17,7 @@ export function ShoppingCartButton() {
   };
 
   return (
-    <ShoppingCartButtonContainer onClick={handleNavigateToCheckout}>
+    <StyledShoppingCartButton onClick={handleNavigateToCheckout}>
       <ShoppingCart
         size={22}
         weight="fill"
@@ -25,6 +25,6 @@ export function ShoppingCartButton() {
       />
 
       {!!cartItemsAmount && <ProductsAmount>{cartItemsAmount}</ProductsAmount>}
-    </ShoppingCartButtonContainer>
+    </StyledShoppingCartButton>
   );
 }

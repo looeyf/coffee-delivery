@@ -21,23 +21,31 @@ export const defaultTheme = {
     'purple-light': '#EBE5F9',
   },
   fonts: {
-    title: {
-      xl: '3rem',
-      l: '2rem',
-      m: '1.5rem',
-      s: '1.25rem',
-      xs: '1.125rem',
+    sizes: {
+      title: {
+        xl: '3rem',
+        l: '2rem',
+        m: '1.5rem',
+        s: '1.25rem',
+        xs: '1.125rem',
+      },
+      text: {
+        l: '1.25rem',
+        m: '1rem',
+        s: '0.875rem',
+        xs: '0.75rem',
+      },
+      button: {
+        g: '0.875rem',
+        m: '0.75rem',
+      },
+      tag: '0.625rem',
     },
-    text: {
-      l: '1.25rem',
-      m: '1rem',
-      s: '0.875rem',
-      xs: '0.75rem',
+    weights: {
+      'extra-bold': 900,
+      bold: 800,
+      'semi-bold': 700,
+      regular: 400,
     },
-    button: {
-      g: '0.875rem',
-      m: '0.75rem',
-    },
-    tag: '0.625rem',
   },
 };

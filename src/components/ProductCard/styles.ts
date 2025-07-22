@@ -26,8 +26,8 @@ export const Tag = styled.span`
   border-radius: 100px;
 
   color: ${({ theme }) => theme.colors['yellow-dark']};
-  font-size: ${({ theme }) => theme.fonts.tag};
-  font-weight: 700;
+  font-size: ${({ theme }) => theme.fonts.sizes.tag};
+  font-weight: ${({ theme }) => theme.fonts.weights['semi-bold']};
   text-transform: uppercase;
 `;
 
@@ -42,7 +42,7 @@ export const ProductDescription = styled.div`
   }
 
   p {
-    font-size: ${({ theme }) => theme.fonts.text.s};
+    font-size: ${({ theme }) => theme.fonts.sizes.text.s};
     color: ${({ theme }) => theme.colors['base-label']};
     text-align: center;
     line-height: 1.3;
@@ -56,12 +56,12 @@ export const ProductCardFooter = styled.footer`
   justify-content: space-between;
 
   p {
-    font-size: ${({ theme }) => theme.fonts.text.s};
+    font-size: ${({ theme }) => theme.fonts.sizes.text.s};
 
     strong {
       font-family: 'Baloo 2';
-      font-size: ${({ theme }) => theme.fonts.title.m};
-      font-weight: 800;
+      font-size: ${({ theme }) => theme.fonts.sizes.title.m};
+      font-weight: ${({ theme }) => theme.fonts.weights.bold};
     }
   }
 `;

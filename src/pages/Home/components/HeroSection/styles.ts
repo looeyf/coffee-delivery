@@ -27,7 +27,7 @@ export const HeroSectionContainer = styled.section`
   }
 
   p {
-    font-size: ${({ theme }) => theme.fonts.text.l};
+    font-size: ${({ theme }) => theme.fonts.sizes.text.l};
     color: ${({ theme }) => theme.colors['base-subtitle']};
 
     margin-bottom: 4.125rem;
