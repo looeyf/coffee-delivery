@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Card } from '../../components/Card';
 
 export const CheckoutContainer = styled.main`
   padding: 2.5rem 0;
@@ -67,4 +68,17 @@ export const CheckoutForm = styled.form`
       grid-column: span 1;
     }
   }
+`;
+
+export const CartSummaryCard = styled(Card)`
+  height: auto;
+  min-width: 28rem;
+  padding: 2.5rem;
+`;
+
+export const Separator = styled.hr`
+  margin: 1.5rem 0;
+  background-color: ${({ theme }) => theme.colors['base-button']};
+  height: 1px;
+  border: 0;
 `;

@@ -6,18 +6,24 @@ import {
   Money,
 } from 'phosphor-react';
 import {
+  CartSummaryCard,
   CheckoutContainer,
   CheckoutForm,
   SectionContentTitle,
   SectionContentWrapper,
+  Separator,
 } from './styles';
 import { useTheme } from 'styled-components';
 import { InputText } from '../../components/InputText';
 import { InputRadio } from '../../components/InputRadio';
 import { InputRadioGroup } from '../../components/InputRadio/styles';
+import { useCart } from '../../contexts/CartContext';
+import { ProductCartItem } from '../../components/ProductCartItem';
 
+// @TODO: create empty state when there is no items in the cart
 export function Checkout() {
   const theme = useTheme();
+  const { cartItems } = useCart();
 
   return (
     <CheckoutContainer>
@@ -73,6 +79,21 @@ export function Checkout() {
             </InputRadio>
           </InputRadioGroup>
         </SectionContentWrapper>
+      </section>
+
+      <section>
+        <h5>Cafés selecionados</h5>
+
+        <CartSummaryCard>
+          <ul>
+            {cartItems.map((cartItem) => (
+              <li key={cartItem.id}>
+                <ProductCartItem productCartItemData={cartItem} />
+                <Separator />
+              </li>
+            ))}
+          </ul>
+        </CartSummaryCard>
       </section>
     </CheckoutContainer>
   );
