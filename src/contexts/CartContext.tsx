@@ -5,11 +5,7 @@ import {
   useEffect,
   useState,
 } from 'react';
-import { Product } from '../@types/Product';
-
-interface CartItem extends Product {
-  quantity: number;
-}
+import { CartItem } from '../@types/CartItem';
 
 type CartItems = CartItem[];
 
