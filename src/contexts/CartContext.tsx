@@ -61,11 +61,13 @@ export function CartContextProvider({ children }: PropsWithChildren) {
   };
 
   useEffect(() => {
-    const localStorageSavedCartItems = JSON.parse(
+    const localStorageSavedCartItems: CartItems = JSON.parse(
       localStorage.getItem(LOCAL_STORAGE_CART_ITEMS_KEY) ?? '[]',
     );
     if (localStorageSavedCartItems.length) {
-      setCartItems(localStorageSavedCartItems);
+      setCartItems(
+        localStorageSavedCartItems.filter((cartItem) => cartItem.quantity > 0),
+      );
     }
   }, []);
   return (
