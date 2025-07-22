@@ -75,9 +75,8 @@ export const ProductFooterActions = styled.div`
   }
 `;
 
-export const AddToCartButton = styled(Button)`
+export const AddToCartButton = styled(Button).attrs({ variant: 'raw' })`
   background-color: ${({ theme }) => theme.colors['purple-dark']};
-  transition: 0.2s background-color ease-in-out;
   &:not(:disabled):hover {
     background-color: ${({ theme }) => theme.colors['purple']};
   }

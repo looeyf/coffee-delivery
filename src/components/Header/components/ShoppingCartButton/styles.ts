@@ -1,15 +1,16 @@
 import styled from 'styled-components';
 import { Button } from '../../../Button';
 
-export const ShoppingCartButtonContainer = styled(Button)`
+export const ShoppingCartButtonContainer = styled(Button).attrs({
+  variant: 'raw',
+})`
   font-size: ${({ theme }) => theme.fonts.text.s};
 
-  transition: 0.2s filter ease-in-out;
+  background-color: ${({ theme }) => theme.colors['yellow-light']};
   &:hover {
     filter: brightness(95%);
   }
 
-  background-color: ${({ theme }) => theme.colors['yellow-light']};
   position: relative;
 `;
 

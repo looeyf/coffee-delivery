@@ -22,14 +22,13 @@ export const LogoNavLink = styled(NavLink)`
   line-height: 0;
 `;
 
-export const LocationButton = styled(Button)`
+export const LocationButton = styled(Button).attrs({ variant: 'raw' })`
   font-size: ${({ theme }) => theme.fonts.text.s};
-
-  transition: 0.2s filter ease-in-out;
-  &:hover {
-    filter: brightness(95%);
-  }
 
   background-color: ${({ theme }) => theme.colors['purple-light']};
   color: ${({ theme }) => theme.colors['purple-dark']};
+
+  &:hover {
+    filter: brightness(95%);
+  }
 `;
