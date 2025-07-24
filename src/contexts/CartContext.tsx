@@ -6,6 +6,7 @@ import {
   useState,
 } from 'react';
 import { CartItem } from '../@types/CartItem';
+import { getCartItemPrice } from '../helpers/getCartItemPrice';
 
 type CartItems = CartItem[];
 
@@ -13,15 +14,25 @@ interface CartContextType {
   cartItems: CartItems;
   updateCartItems: (updatedCartItem: CartItem) => void;
   removeCartItem: (cartItemId: CartItem) => void;
+  shippingPrice: number;
+  totalCartItemsPrice: number;
+  totalPrice: number;
 }
 
 const CartContext = createContext({} as CartContextType);
 
 const LOCAL_STORAGE_CART_ITEMS_KEY = '@rocketseat:coffee-delivery-cart';
+const MOCKED_SHIPPING_PRICE = 3.5;
 
 // @TODO: create reducer to handle context updates
 export function CartContextProvider({ children }: PropsWithChildren) {
   const [cartItems, setCartItems] = useState<CartItems>([]);
+
+  const totalCartItemsPrice = cartItems.reduce((acc, cartItem) => {
+    const cartItemPrice = getCartItemPrice(cartItem);
+    return acc + cartItemPrice;
+  }, 0);
+  const totalPrice = totalCartItemsPrice + MOCKED_SHIPPING_PRICE;
 
   const saveCartItemsInLocalStorage = (newCartItems: CartItems) => {
     localStorage.setItem(
@@ -54,9 +65,12 @@ export function CartContextProvider({ children }: PropsWithChildren) {
 
   const removeCartItem = (cartItemToBeRemoved: CartItem) => {
     setCartItems((currentCartItems) => {
-      return currentCartItems.filter(
+      const updatedCartItems = currentCartItems.filter(
         (currentCartItem) => currentCartItem.id !== cartItemToBeRemoved.id,
       );
+
+      saveCartItemsInLocalStorage(updatedCartItems);
+      return updatedCartItems;
     });
   };
 
@@ -70,12 +84,16 @@ export function CartContextProvider({ children }: PropsWithChildren) {
       );
     }
   }, []);
+
   return (
     <CartContext.Provider
       value={{
         cartItems,
         updateCartItems,
         removeCartItem,
+        shippingPrice: MOCKED_SHIPPING_PRICE,
+        totalCartItemsPrice,
+        totalPrice,
       }}
     >
       {children}

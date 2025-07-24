@@ -11,6 +11,7 @@ import { Trash } from 'phosphor-react';
 import { InputNumber } from '../InputNumber';
 import { Button } from '../Button';
 import { useCart } from '../../contexts/CartContext';
+import { getCartItemPrice } from '../../helpers/getCartItemPrice';
 
 interface ProductCartItemProps {
   productCartItemData: CartItem;
@@ -18,9 +19,9 @@ interface ProductCartItemProps {
 
 export function ProductCartItem({ productCartItemData }: ProductCartItemProps) {
   const theme = useTheme();
-  const formattedPrice = formatCurrency(
-    productCartItemData.price * productCartItemData.quantity,
-  );
+
+  const cartItemPrice = getCartItemPrice(productCartItemData);
+  const formattedPrice = formatCurrency(cartItemPrice);
 
   const { updateCartItems, removeCartItem } = useCart();
   const handleUpdateProductCartQuantity = (newQuantity: number) => {

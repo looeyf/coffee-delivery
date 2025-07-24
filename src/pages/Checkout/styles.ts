@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { Card } from '../../components/Card';
+import { Button } from '../../components/Button';
 
 export const CheckoutContainer = styled.main`
   padding: 2.5rem 0;
@@ -74,6 +75,11 @@ export const CartSummaryCard = styled(Card)`
   height: auto;
   min-width: 28rem;
   padding: 2.5rem;
+
+  ul {
+    max-height: 32.45rem;
+    overflow: auto;
+  }
 `;
 
 export const Separator = styled.hr`
@@ -81,4 +87,25 @@ export const Separator = styled.hr`
   background-color: ${({ theme }) => theme.colors['base-button']};
   height: 1px;
   border: 0;
+`;
+
+export const PricingContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+
+  p {
+    display: flex;
+    justify-content: space-between;
+
+    &:last-of-type {
+      font-size: ${({ theme }) => theme.fonts.sizes.text.l};
+      font-weight: ${({ theme }) => theme.fonts.weights.bold};
+    }
+  }
+`;
+
+export const ConfirmOrderButton = styled(Button)`
+  width: 100%;
 `;

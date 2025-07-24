@@ -9,6 +9,8 @@ import {
   CartSummaryCard,
   CheckoutContainer,
   CheckoutForm,
+  ConfirmOrderButton,
+  PricingContainer,
   SectionContentTitle,
   SectionContentWrapper,
   Separator,
@@ -19,11 +21,13 @@ import { InputRadio } from '../../components/InputRadio';
 import { InputRadioGroup } from '../../components/InputRadio/styles';
 import { useCart } from '../../contexts/CartContext';
 import { ProductCartItem } from '../../components/ProductCartItem';
+import { formatCurrency } from '../../helpers/formatCurrency';
 
 // @TODO: create empty state when there is no items in the cart
 export function Checkout() {
   const theme = useTheme();
-  const { cartItems } = useCart();
+  const { cartItems, totalCartItemsPrice, shippingPrice, totalPrice } =
+    useCart();
 
   return (
     <CheckoutContainer>
@@ -93,6 +97,21 @@ export function Checkout() {
               </li>
             ))}
           </ul>
+
+          <PricingContainer>
+            <p>
+              Total de items{' '}
+              <span>R$ {formatCurrency(totalCartItemsPrice)}</span>
+            </p>
+            <p>
+              Entrega <span>R$ {formatCurrency(shippingPrice)}</span>
+            </p>
+            <p>
+              Total <span>R$ {formatCurrency(totalPrice)}</span>
+            </p>
+          </PricingContainer>
+
+          <ConfirmOrderButton size="large">CONFIRMAR PEDIDO</ConfirmOrderButton>
         </CartSummaryCard>
       </section>
     </CheckoutContainer>

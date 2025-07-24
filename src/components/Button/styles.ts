@@ -46,9 +46,9 @@ export const StyledButton = styled.button<{
 
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 0.25rem;
 
-  line-height: 1.6;
   ${({ size }) => BUTTON_SIZE[size]}
 
   &:disabled {
