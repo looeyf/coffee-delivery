@@ -6,7 +6,7 @@ export const IconWithTextContainer = styled.div`
   gap: 0.75rem;
 `;
 
-export const IconContainer = styled.span<{ color: string }>`
+export const IconContainer = styled.div<{ color: string }>`
   width: 32px;
   height: 32px;
   border-radius: 50%;
@@ -15,4 +15,8 @@ export const IconContainer = styled.span<{ color: string }>`
   display: flex;
   align-items: center;
   justify-content: center;
+`;
+
+export const TextContainer = styled.span`
+  flex: 1;
 `;

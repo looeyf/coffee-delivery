@@ -8,7 +8,7 @@ export const ResetCssGlobalStyle = createGlobalStyle`
   }
 
   body {
-    background-color: ${({ theme }) => theme.colors['background']};
+    background-color: ${({ theme }) => theme.colors.background};
     color: ${({ theme }) => theme.colors['base-text']};
     -webkit-font-smoothing: antialiased;
   }

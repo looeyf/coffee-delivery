@@ -14,6 +14,7 @@ interface CartContextType {
   cartItems: CartItems;
   updateCartItems: (updatedCartItem: CartItem) => void;
   removeCartItem: (cartItemId: CartItem) => void;
+  resetCart: () => void;
   shippingPrice: number;
   totalCartItemsPrice: number;
   totalPrice: number;
@@ -74,6 +75,11 @@ export function CartContextProvider({ children }: PropsWithChildren) {
     });
   };
 
+  const resetCart = () => {
+    setCartItems([]);
+    saveCartItemsInLocalStorage([]);
+  };
+
   useEffect(() => {
     const localStorageSavedCartItems: CartItems = JSON.parse(
       localStorage.getItem(LOCAL_STORAGE_CART_ITEMS_KEY) ?? '[]',
@@ -91,6 +97,7 @@ export function CartContextProvider({ children }: PropsWithChildren) {
         cartItems,
         updateCartItems,
         removeCartItem,
+        resetCart,
         shippingPrice: MOCKED_SHIPPING_PRICE,
         totalCartItemsPrice,
         totalPrice,

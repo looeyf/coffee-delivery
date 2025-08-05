@@ -1,5 +1,5 @@
 import { ElementType, PropsWithChildren } from 'react';
-import { IconContainer, IconWithTextContainer } from './styles';
+import { IconContainer, IconWithTextContainer, TextContainer } from './styles';
 import { IconProps } from 'phosphor-react';
 import { useTheme } from 'styled-components';
 
@@ -21,7 +21,7 @@ export function IconWithText({
         <Icon size={16} weight="fill" color={theme.colors.white} />
       </IconContainer>
 
-      {children}
+      <TextContainer>{children}</TextContainer>
     </IconWithTextContainer>
   );
 }
