@@ -48,4 +48,8 @@ export const StyledInputText = styled.input.attrs({ type: 'text' })`
   &:focus {
     border-color: ${({ theme }) => theme.colors['yellow-dark']};
   }
+
+  &.has-error {
+    border-color: ${({ theme }) => theme.colors.red};
+  }
 `;

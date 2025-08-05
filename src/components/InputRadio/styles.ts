@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export const HiddenInputRadio = styled.input.attrs({ type: 'radio' })`
   -webkit-appearance: none;
@@ -36,10 +36,21 @@ export const InputRadioLabel = styled.label`
   }
 `;
 
-export const InputRadioGroup = styled.div<{ direction?: 'column' | 'row' }>`
+export const InputRadioGroup = styled.div<{
+  direction?: 'column' | 'row';
+  hasError?: boolean;
+}>`
   display: flex;
   flex-direction: ${({ direction }) => direction};
   gap: 0.75rem;
+
+  ${({ theme, hasError }) =>
+    hasError &&
+    css`
+      > label {
+        border-color: ${theme.colors.red};
+      }
+    `}
 
   > label {
     flex: 1;

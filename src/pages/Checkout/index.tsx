@@ -6,9 +6,9 @@ import {
   Money,
 } from 'phosphor-react';
 import {
+  AddressInputGroup,
   CartSummaryCard,
-  CheckoutContainer,
-  CheckoutForm,
+  CheckoutFormContainer,
   ConfirmOrderButton,
   PricingContainer,
   SectionContentTitle,
@@ -22,6 +22,13 @@ import { InputRadioGroup } from '../../components/InputRadio/styles';
 import { useCart } from '../../contexts/CartContext';
 import { ProductCartItem } from '../../components/ProductCartItem';
 import { formatCurrency } from '../../helpers/formatCurrency';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import {
+  ConfirmOrderFormData,
+  confirmOrderFormSchema,
+  PAYMENT_METHOD_ENUM,
+} from './types';
 
 // @TODO: create empty state when there is no items in the cart
 export function Checkout() {
@@ -29,8 +36,17 @@ export function Checkout() {
   const { cartItems, totalCartItemsPrice, shippingPrice, totalPrice } =
     useCart();
 
+  const { register, handleSubmit, formState } = useForm<ConfirmOrderFormData>({
+    resolver: zodResolver(confirmOrderFormSchema),
+    mode: 'all',
+  });
+
+  const handleConfirmOrder = (data: ConfirmOrderFormData) => {
+    // @TODO: navigate to finished page
+    console.log(data);
+  };
   return (
-    <CheckoutContainer>
+    <CheckoutFormContainer onSubmit={handleSubmit(handleConfirmOrder)}>
       <section>
         <h5>Complete seu pedido</h5>
 
@@ -44,15 +60,45 @@ export function Checkout() {
             </div>
           </SectionContentTitle>
 
-          <CheckoutForm>
-            <InputText name="zip" placeholder="CEP" required />
-            <InputText name="street" placeholder="Rua" required />
-            <InputText name="number" placeholder="Número" required />
-            <InputText name="additional" placeholder="Complemento" />
-            <InputText name="neighborhood" placeholder="Bairro" required />
-            <InputText name="city" placeholder="Cidade" required />
-            <InputText name="state" placeholder="UF" required />
-          </CheckoutForm>
+          <AddressInputGroup>
+            <InputText
+              {...register('zip')}
+              hasError={!!formState.errors.zip}
+              placeholder="CEP"
+              required
+            />
+            <InputText
+              {...register('street')}
+              hasError={!!formState.errors.street}
+              placeholder="Rua"
+              required
+            />
+            <InputText
+              {...register('number')}
+              hasError={!!formState.errors.number}
+              placeholder="Número"
+              required
+            />
+            <InputText {...register('additional')} placeholder="Complemento" />
+            <InputText
+              {...register('neighborhood')}
+              hasError={!!formState.errors.neighborhood}
+              placeholder="Bairro"
+              required
+            />
+            <InputText
+              {...register('city')}
+              hasError={!!formState.errors.city}
+              placeholder="Cidade"
+              required
+            />
+            <InputText
+              {...register('state')}
+              hasError={!!formState.errors.state}
+              placeholder="UF"
+              required
+            />
+          </AddressInputGroup>
         </SectionContentWrapper>
 
         <SectionContentWrapper>
@@ -67,18 +113,26 @@ export function Checkout() {
             </div>
           </SectionContentTitle>
 
-          <InputRadioGroup>
+          <InputRadioGroup hasError={!!formState.errors.paymentMethod}>
             <InputRadio
-              name="paymentMethod"
-              value="creditCard"
+              {...register('paymentMethod')}
+              value={PAYMENT_METHOD_ENUM.CREDIT_CARD}
               Icon={CreditCard}
             >
               Cartão de Crédito
             </InputRadio>
-            <InputRadio name="paymentMethod" value="debitCard" Icon={Bank}>
+            <InputRadio
+              {...register('paymentMethod')}
+              value={PAYMENT_METHOD_ENUM.DEBIT_CARD}
+              Icon={Bank}
+            >
               Cartão de Débito
             </InputRadio>
-            <InputRadio name="paymentMethod" value="money" Icon={Money}>
+            <InputRadio
+              {...register('paymentMethod')}
+              value={PAYMENT_METHOD_ENUM.MONEY}
+              Icon={Money}
+            >
               Dinheiro
             </InputRadio>
           </InputRadioGroup>
@@ -111,9 +165,11 @@ export function Checkout() {
             </p>
           </PricingContainer>
 
-          <ConfirmOrderButton size="large">CONFIRMAR PEDIDO</ConfirmOrderButton>
+          <ConfirmOrderButton type="submit" size="large">
+            CONFIRMAR PEDIDO
+          </ConfirmOrderButton>
         </CartSummaryCard>
       </section>
-    </CheckoutContainer>
+    </CheckoutFormContainer>
   );
 }

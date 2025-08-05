@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { Card } from '../../components/Card';
 import { Button } from '../../components/Button';
 
-export const CheckoutContainer = styled.main`
+export const CheckoutFormContainer = styled.form`
   padding: 2.5rem 0;
   display: flex;
   gap: 2rem;
@@ -45,7 +45,7 @@ export const SectionContentTitle = styled.div`
   }
 `;
 
-export const CheckoutForm = styled.form`
+export const AddressInputGroup = styled.div`
   display: grid;
   grid-template-columns: repeat(6, minmax(0, 1fr));
   grid-gap: 1rem 0.75rem;
