@@ -7,6 +7,7 @@ import {
 } from 'react';
 import { CartItem } from '../@types/CartItem';
 import { getCartItemPrice } from '../helpers/getCartItemPrice';
+import { coffeeList } from '../mocks/coffeeList';
 
 type CartItems = CartItem[];
 
@@ -38,7 +39,9 @@ export function CartContextProvider({ children }: PropsWithChildren) {
   const saveCartItemsInLocalStorage = (newCartItems: CartItems) => {
     localStorage.setItem(
       LOCAL_STORAGE_CART_ITEMS_KEY,
-      JSON.stringify(newCartItems),
+      JSON.stringify(
+        newCartItems.map(({ id, quantity }) => ({ id, quantity })),
+      ),
     );
   };
 
@@ -84,10 +87,19 @@ export function CartContextProvider({ children }: PropsWithChildren) {
     const localStorageSavedCartItems: CartItems = JSON.parse(
       localStorage.getItem(LOCAL_STORAGE_CART_ITEMS_KEY) ?? '[]',
     );
+
     if (localStorageSavedCartItems.length) {
-      setCartItems(
-        localStorageSavedCartItems.filter((cartItem) => cartItem.quantity > 0),
-      );
+      const localStorageToStateCartItems: CartItem[] = [];
+
+      localStorageSavedCartItems.forEach(({ id, quantity }) => {
+        const foundCartItem = coffeeList.find((coffee) => coffee.id === id);
+
+        if (foundCartItem && quantity > 0) {
+          localStorageToStateCartItems.push({ ...foundCartItem, quantity });
+        }
+      });
+
+      setCartItems(localStorageToStateCartItems);
     }
   }, []);
 
