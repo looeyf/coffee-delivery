@@ -31,6 +31,7 @@ export function InputNumber({ value, onChange }: InputNumberProps) {
   return (
     <InputNumberContainer>
       <IconButton
+        type="button"
         position="left"
         onClick={handleDecreaseQuantity}
         disabled={isMinimumQuantity}
@@ -45,7 +46,11 @@ export function InputNumber({ value, onChange }: InputNumberProps) {
           if (isNumber(newValue)) handleChange(parseInt(newValue));
         }}
       />
-      <IconButton position="right" onClick={handleIncreaseQuantity}>
+      <IconButton
+        type="button"
+        position="right"
+        onClick={handleIncreaseQuantity}
+      >
         <Plus size={ICON_SIZE} />
       </IconButton>
     </InputNumberContainer>

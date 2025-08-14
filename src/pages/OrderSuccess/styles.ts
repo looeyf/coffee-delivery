@@ -21,6 +21,14 @@ export const OrderSuccessSubtitle = styled.p`
 export const OrderSuccessContent = styled.div`
   display: flex;
   gap: 6.25rem;
+
+  img {
+    max-width: 100%;
+  }
+
+  @media screen and (max-width: 1050px) {
+    flex-direction: column;
+  }
 `;
 
 export const OrderSuccessCard = styled(Card)`

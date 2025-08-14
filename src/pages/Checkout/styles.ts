@@ -7,6 +7,10 @@ export const CheckoutFormContainer = styled.form`
   display: flex;
   gap: 2rem;
 
+  @media screen and (max-width: 1050px) {
+    flex-direction: column;
+  }
+
   h5 {
     color: ${({ theme }) => theme.colors['base-subtitle']};
     margin-bottom: 0.9375rem;
@@ -69,12 +73,21 @@ export const AddressInputGroup = styled.div`
       grid-column: span 1;
     }
   }
+
+  @media screen and (max-width: 768px) {
+    > * {
+      grid-column: span 6 !important;
+    }
+  }
 `;
 
 export const CartSummaryCard = styled(Card)`
   height: auto;
-  min-width: 28rem;
   padding: 2.5rem;
+
+  @media screen and (min-width: 768px) {
+    min-width: 28rem;
+  }
 
   ul {
     max-height: 32.45rem;

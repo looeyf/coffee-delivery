@@ -44,6 +44,10 @@ export const InputRadioGroup = styled.div<{
   flex-direction: ${({ direction }) => direction};
   gap: 0.75rem;
 
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+  }
+
   ${({ theme, hasError }) =>
     hasError &&
     css`

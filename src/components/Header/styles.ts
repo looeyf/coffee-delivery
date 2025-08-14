@@ -3,6 +3,11 @@ import styled from 'styled-components';
 import { Button } from '../Button';
 
 export const HeaderContainer = styled.header`
+  z-index: 2;
+  background-color: ${({ theme }) => theme.colors.background};
+  position: sticky;
+  top: 0;
+
   display: flex;
   align-items: center;
   justify-content: space-between;
